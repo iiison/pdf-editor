@@ -56,7 +56,7 @@ export function Education({ saveStep, visibility }: ComponentProps) {
 
   return (
     <div className={`w-full h-full flex items-center justify-center ${!visibility && 'hidden'}`}>
-      <div className="flex-col flex gap-3 w-3/4">
+      <div className="flex-col flex gap-3 w-1/2">
         <div className="flex w-full gap-2">
           {educations && educations.length > 0 && (
             <ul className="w-full flex gap-2">

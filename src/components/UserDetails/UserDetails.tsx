@@ -3,8 +3,9 @@ import { useState } from 'react'
 import { About } from './About'
 import { Experience } from './Experience'
 import { Education } from './Education'
+import { Preview } from './Preview'
 
-import type { ComponentProps, UserDataT, ExperienceT } from './types'
+import type { ComponentProps, AllUserDataT } from './types'
 
 function Orange() {
   return <div>Orange</div>
@@ -16,10 +17,10 @@ function Yellow() {
 
 export default function UserDetails() {
   const [showResume, toggleResume] = useState(true)
-  const [currentStep, setStep] = useState(2)
-  const [userData, setUserData] = useState<Partial<UserDataT>>({})
+  const [currentStep, setStep] = useState(0)
+  const [userData, setUserData] = useState<Partial<AllUserDataT>>({})
 
-  const handleDataSave = (data: Record<string, string | number | File | any[] | undefined>) => {
+  const handleDataSave = (data: Partial<AllUserDataT>) => {
     setStep(currentStep + 1)
     setUserData({
       ...userData,
@@ -39,6 +40,9 @@ export default function UserDetails() {
             toggleResume,
           }
         ))}
+      </div>
+      <div className="w-1/2 flex">
+        <Preview userData={userData} />
       </div>
     </div>
   )

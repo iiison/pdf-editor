@@ -1,35 +1,43 @@
 import { useState, Dispatch, SetStateAction, ChangeEvent } from 'react'
 
 import { Input, TextArea } from './Input'
-import type { ComponentProps } from './types'
+import type { ComponentProps, UserDataT } from './types'
 
 export function About({ saveStep, visibility, toggleResume }: ComponentProps) {
-  const [image, setImage] = useState<File>()
+  const [image, setImage] = useState<UserDataT["image"]>()
   const [fName, setFname] = useState<string>('')
   const [lName, setLname] = useState<string>('')
   const [about, setAbout] = useState<string>('')
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
-      setImage(event.target.files[0])
+      const reader = new FileReader()
+
+      reader.addEventListener('load', (event) => {
+
+        setImage(event.target?.result)
+      })
+
+      reader.readAsDataURL(event.target.files[0])
     }
   }
 
   const handleButtonClick = () => {
     if (fName && lName && about) {
       saveStep({
-        fName,
-        lName,
-        about,
-        image,
+        about: {
+          fName,
+          lName,
+          about,
+          image,
+        }
       })
-      toggleResume(true)
     }
   }
 
   return (
     <div className={`w-full h-full flex items-center justify-center ${!visibility && 'hidden'}`}>
-      <div className="flex-col flex gap-3 w-1/2">
+      <div className="flex-col flex gap-3 w-1/4">
         <Input value={fName} onChange={setFname} placeholder='First Name' />
         <Input value={lName} onChange={setLname} placeholder='Last Name' />
         <TextArea value={about} onChange={setAbout} placeholder='About You' />

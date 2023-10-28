@@ -1,16 +1,10 @@
 import { Dispatch, SetStateAction } from 'react'
 
-export type ComponentProps = {
-  saveStep: (data: Record<string, string | number | File | undefined>) => void;
-  toggleResume: Dispatch<SetStateAction<boolean>>;
-  visibility: boolean;
-}
-
 export type UserDataT = {
   fName: string;
   lName: string;
   about: string;
-  image: File;
+  image: string | ArrayBuffer | null | undefined;
 }
 
 export type ExperienceT = {
@@ -29,5 +23,17 @@ export type EducationT = {
   grade: string;
   from: string;
   to: string;
+}
+
+export type AllUserDataT = {
+  about: Partial<UserDataT>;
+  experiences: Partial<ExperienceT>[];
+  educations: Partial<EducationT>[];
+}
+
+export type ComponentProps = {
+  saveStep: (data: Partial<AllUserDataT>) => void;
+  toggleResume: Dispatch<SetStateAction<boolean>>;
+  visibility: boolean;
 }
 
