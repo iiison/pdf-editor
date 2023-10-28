@@ -1,53 +1,53 @@
 import { useState, Dispatch, SetStateAction, ChangeEvent } from 'react'
 
 import { Input, TextArea } from './Input'
-import type { ComponentProps, UserDataT, ExperienceT } from './types'
+import type { ComponentProps, UserDataT, EducationT } from './types'
 
-export function Experience({ saveStep, visibility }: ComponentProps) {
-  const DEFAULT_EXP = {
-    title: '',
-    company: '',
-    details: '',
+export function Education({ saveStep, visibility }: ComponentProps) {
+  const DEFAULT_EDU = {
+    name: '',
+    degree: '',
     from: '',
     to: '',
-    location: '',
+    grade: '',
+    details: ''
   }
-  const [experiences, setExperiences] = useState<ExperienceT[]>([])
+  const [educations, setExperiences] = useState<EducationT[]>([])
   const [activeIndex, setActiveIndex] = useState(0)
-  const [experience, setExperience] = useState<ExperienceT>(DEFAULT_EXP)
+  const [education, setExperience] = useState<EducationT>(DEFAULT_EDU)
 
   const handleButtonClick = () => {
-    if (experiences.length !== 0) {
+    if (educations.length !== 0) {
       saveStep({
         /* @ts-ignore */
-        experiences
+        educations
       })
     }
   }
 
-  const handleCompanyTagClick = (index: number) => () => {
-    if (!experiences) {
+  const handleEduTagClick = (index: number) => () => {
+    if (!educations) {
       return
     }
 
     setActiveIndex(index)
-    setExperience(experiences[index])
+    setExperience(educations[index])
   }
 
   const handleAddMoreClick = () => {
     setExperiences((prev = []) => {
       const prevCopy = [...prev]
 
-      prevCopy[activeIndex] = experience
+      prevCopy[activeIndex] = education
 
       return prevCopy
     })
 
     setActiveIndex(activeIndex + 1)
-    setExperience(DEFAULT_EXP)
+    setExperience(DEFAULT_EDU)
   }
 
-  const handleFieldChange = (fieldName: keyof ExperienceT) => (value: string) => {
+  const handleFieldChange = (fieldName: keyof EducationT) => (value: string) => {
     setExperience((prev) => ({
       ...prev,
       [fieldName]: value
@@ -58,34 +58,34 @@ export function Experience({ saveStep, visibility }: ComponentProps) {
     <div className={`w-full h-full flex items-center justify-center ${!visibility && 'hidden'}`}>
       <div className="flex-col flex gap-3 w-3/4">
         <div className="flex w-full gap-2">
-          {experiences && experiences.length > 0 && (
+          {educations && educations.length > 0 && (
             <ul className="w-full flex gap-2">
-              {experiences.map((exp, index) => (
+              {educations.map((exp, index) => (
                 <li 
-                  onClick={handleCompanyTagClick(index)}
+                  onClick={handleEduTagClick(index)}
                   className="bg-affair-700 text-white rounded-md py-1 px-2 cursor-pointer"
-                >{exp?.company}</li>
+                >{exp?.name}</li>
               ))}
             </ul>
           )}
         </div>
         <div className="flex-col flex w-full gap-3">
           {/*@ts-ignore*/}
-          <Input value={experience.company} onChange={handleFieldChange('company')} placeholder='Company Name' />
+          <Input value={education.name} onChange={handleFieldChange('name')} placeholder='Institute Name' />
           {/*@ts-ignore*/}
-          <Input value={experience.title} onChange={handleFieldChange('title')} placeholder='Job Title' />
+          <Input value={education.degree} onChange={handleFieldChange('degree')} placeholder='Degree' />
           {/*@ts-ignore*/}
-          <Input value={experience.from} onChange={handleFieldChange('from')} placeholder='Start Date (MM/YYYY)' />
+          <Input value={education.from} onChange={handleFieldChange('from')} placeholder='Start Date (MM/YYYY)' />
           {/*@ts-ignore*/}
-          <Input value={experience.to} onChange={handleFieldChange('to')} placeholder='End Date (MM/YYYY)' />
+          <Input value={education.to} onChange={handleFieldChange('to')} placeholder='End Date (MM/YYYY)' />
           {/*@ts-ignore*/}
-          <Input value={experience.location} onChange={handleFieldChange('location')} placeholder='Location' />
-          <TextArea value={experience.details} onChange={handleFieldChange('details')} placeholder='Add Details' />
+          <Input value={education.grade} onChange={handleFieldChange('grade')} placeholder='Grade' />
+          <TextArea value={education.details} onChange={handleFieldChange('details')} placeholder='Add Details' />
           <div className="w-full flex justify-between">
             <button 
               onClick={handleAddMoreClick}
               className="rounded rounded-md hover:bg-affair-600 py-2 border border-affair-400 text-affair-300 hover:text-white mt-3 w-[48%]"
-            >{activeIndex === experiences.length ? 'Add More' : 'Save Changes'}</button>
+            >{activeIndex === educations.length ? 'Add More' : 'Save Changes'}</button>
             <button 
               onClick={handleButtonClick}
               className="rounded rounded-md hover:bg-affair-600 py-2 border border-affair-400 text-affair-300 hover:text-white mt-3 w-[48%]"

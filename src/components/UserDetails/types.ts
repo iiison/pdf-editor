@@ -22,3 +22,12 @@ export type ExperienceT = {
   to: string;
 }
 
+export type EducationT = {
+  name: string;
+  degree: string;
+  details: string;
+  grade: string;
+  from: string;
+  to: string;
+}
+
