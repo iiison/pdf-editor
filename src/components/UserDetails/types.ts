@@ -14,6 +14,11 @@ export type UserDataT = {
 }
 
 export type ExperienceT = {
-  companyName: string;
+  company: string;
+  title: string;
+  details: string;
+  location: string;
+  from: string;
+  to: string;
 }
 

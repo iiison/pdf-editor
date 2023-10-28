@@ -17,7 +17,7 @@ function Yellow() {
 
 export default function UserDetails() {
   const [showResume, toggleResume] = useState(true)
-  const [currentStep, setStep] = useState(0)
+  const [currentStep, setStep] = useState(1)
   const [userData, setUserData] = useState<Partial<UserDataT>>({})
 
   const handleDataSave = (data: Record<string, string | number | File | undefined>) => {
@@ -28,9 +28,7 @@ export default function UserDetails() {
     })
   } 
 
-  // const Order: ((data: ComponentProps) => JSX.Element)[] = [About, Experience, Orange, Yellow]
-  // const Order: ((data: ComponentProps) => JSX.Element)[] = [Experience, Orange, Yellow]
-  const Order: ((data: ComponentProps) => JSX.Element)[] = [About]
+  const Order: ((data: ComponentProps) => JSX.Element)[] = [About, Experience]
 
   return (
     <div className="h-[calc(100vh - 67px)] w-full overflow-hidden flex">

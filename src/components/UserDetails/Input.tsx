@@ -10,7 +10,7 @@ type InputProps = {
 type TextAProps = {
   value: string;
   rows?: number | undefined;
-  onChange: Dispatch<SetStateAction<string>>;
+  onChange: ((value: any) => void) | Dispatch<SetStateAction<string>>;
   placeholder?: string | undefined;
   classes?: string | undefined;
 }
