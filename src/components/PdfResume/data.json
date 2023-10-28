@@ -1,0 +1,95 @@
+{
+  "Education": [
+    {
+      "Degree": "Postgraduate Degree in [Field of Study]",
+      "Institution": "National University of Singapore (NUS)",
+      "Year": "2017-2019"
+    },
+    {
+      "Degree": "Undergraduate Degree in [Field of Study]",
+      "Institution": "The university of ABC",
+      "Year": "2011-2015"
+    }
+  ],
+  "workExperience": [
+    {
+      "Position": "AI Engineer",
+      "Company": "Grab, Singapore",
+      "Duration": "2019-2022",
+      "Responsibilities": [
+        "Developed and implemented AI algorithms and models to enhance user experience and improve business processes.",
+        "Collaborated with cross-functional teams to gather requirements and provide technical expertise for AI solutions.",
+        "Conducted data analysis and utilized machine learning techniques to optimize system performance and efficiency."
+      ]
+    },
+    {
+      "Position": "Research Assistant",
+      "Company": "National University of Singapore (NUS)",
+      "Duration": "2017-2019",
+      "Responsibilities": [
+        "Conducted research in the field of [Field of Research], focusing on [Specific Research Area].",
+        "Developed and implemented novel algorithms to solve complex problems, resulting in [Notable Achievement/Outcome].",
+        "Published research findings in reputable journals and presented at international conferences."
+      ]
+    },
+    {
+      "Position": "Software Engineer",
+      "Company": "Another Great Company, Singapore",
+      "Duration": "2015-2017",
+      "Responsibilities": [
+        "Collaborated with a team of engineers to develop and maintain high-performance software systems for financial trading.",
+        "Implemented efficient algorithms and optimized code to improve system performance and reduce latency.",
+        "Worked closely with traders and business stakeholders to gather requirements and deliver solutions to meet their needs."
+      ]
+    }
+  ],
+  "Publications": [
+    {
+      "Title": "Publication 1: [Title]",
+      "journal": "[Name]",
+      "Year": "[Year]",
+      "Description": "Brief description or key findings of the publication."
+    },
+    {
+      "Title": "Publication 2: [Title]",
+      "journal": "[Name]",
+      "Year": "[Year]",
+      "Description": "Brief description or key findings of the publication."
+    }
+  ],
+  "researchProjects": [
+    {
+      "Title": "Project 1: [Title]",
+      "Institution": "National University of Singapore (NUS)",
+      "Duration": "2017-2019",
+      "Description": "Brief description of the project and your role in it. Highlight any notable achievements, outcomes, or impact."
+    },
+    {
+      "Title": "Project 2: [Title]",
+      "Institution": "National University of Singapore (NUS)",
+      "Duration": "2016-2017",
+      "Description": "Brief description of the project and your role in it. Highlight any notable achievements, outcomes, or impact."
+    },
+    {
+      "Title": "Project 3: [Title]",
+      "Institution": "The university of ABC",
+      "Duration": "2014-2015",
+      "Description": "Brief description of the project and your role in it. Highlight any notable achievements, outcomes, or impact."
+    }
+  ],
+  "Sports Accolades": [
+    {
+      "Accolade": "Sleeping Championship Winner",
+      "Institution": "The university of ABC",
+      "Year": "2014"
+    }
+  ],
+  "Skills": [
+    "Proficient in machine learning algorithms, deep learning frameworks (e.g., TensorFlow, PyTorch), and data analysis tools (e.g., Python, R, MATLAB).",
+    "Strong programming skills in languages such as Python, Java, and C++.",
+    "Experience in developing and deploying AI models in production environments.",
+    "Excellent problem-solving and analytical abilities.",
+    "Strong communication and teamwork skills."
+  ]
+}
+
