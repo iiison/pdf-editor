@@ -38,6 +38,7 @@ export function About({ saveStep, visibility, toggleResume }: ComponentProps) {
   return (
     <div className={`w-full h-full flex items-center justify-center ${!visibility && 'hidden'}`}>
       <div className="flex-col flex gap-3 w-1/4">
+        <h1 className="w-full text-center text-xl text-affair-400 mb-2">About You</h1>
         <Input value={fName} onChange={setFname} placeholder='First Name' />
         <Input value={lName} onChange={setLname} placeholder='Last Name' />
         <TextArea value={about} onChange={setAbout} placeholder='About You' />
