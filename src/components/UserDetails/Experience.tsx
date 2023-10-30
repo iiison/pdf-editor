@@ -86,7 +86,7 @@ export function Experience({ saveStep, visibility }: ComponentProps) {
             <button 
               onClick={handleAddMoreClick}
               className="rounded rounded-md hover:bg-affair-600 py-2 border border-affair-400 text-affair-300 hover:text-white mt-3 w-[48%]"
-            >{activeIndex === experiences.length ? 'Add More' : 'Save Changes'}</button>
+            >{activeIndex === experiences.length ? 'Add Experience' : 'Save Changes'}</button>
             <button 
               onClick={handleButtonClick}
               className="rounded rounded-md hover:bg-affair-600 py-2 border border-affair-400 text-affair-300 hover:text-white mt-3 w-[48%]"

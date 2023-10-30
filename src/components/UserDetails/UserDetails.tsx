@@ -28,6 +28,10 @@ export default function UserDetails() {
     })
   } 
 
+  const handleStepChangeClick = (index: number) => () => {
+    setStep(index)
+  }
+
   const Order: ((data: ComponentProps) => JSX.Element)[] = [About, Experience, Education]
 
   return (
@@ -42,7 +46,7 @@ export default function UserDetails() {
         ))}
       </div>
       <div className="w-1/2 flex">
-        <Preview userData={userData} />
+        <Preview userData={userData} onSectionClick={handleStepChangeClick} />
       </div>
     </div>
   )
