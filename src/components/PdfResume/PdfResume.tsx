@@ -40,11 +40,11 @@ export default function PdfResume() {
                 <View style={styles.contacts}>
                   <View style={styles.contact}>
                     <Image src={email} style={styles.contactIcon} />
-                    <Text style={styles.contactText}>rick@pickle.com</Text>
+                    <Text style={styles.contactText}>{about.email}</Text>
                   </View>
                   <View style={styles.contact}>
                     <Image src={satellite} style={styles.contactIcon} />
-                    <Text style={styles.contactText}>+232-8932291232</Text>
+                    <Text style={styles.contactText}>{about.phone}</Text>
                   </View>
                 </View>
               </View>

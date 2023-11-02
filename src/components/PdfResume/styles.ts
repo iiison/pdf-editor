@@ -37,15 +37,15 @@ export const styles = StyleSheet.create({
     width: 390,
   },
   title: {
-    fontSize: 25,
+    fontSize: 20,
     width: '100%',
     color: affair['200'],
     marginTop: 10,
   },
   subTitle: {
-    fontSize: 15,
+    fontSize: 12,
     width: '100%',
-    margin: '5 0 10',
+    margin: '10 0 5',
     color: affair['400']
   },
   aboutMe: {

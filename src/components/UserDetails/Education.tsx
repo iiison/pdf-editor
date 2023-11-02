@@ -10,7 +10,8 @@ export function Education({ saveStep, visibility }: ComponentProps) {
     from: '',
     to: '',
     grade: '',
-    details: ''
+    details: '',
+    major: '',
   }
   const [educations, setExperiences] = useState<EducationT[]>([])
   const [activeIndex, setActiveIndex] = useState(0)
@@ -74,6 +75,8 @@ export function Education({ saveStep, visibility }: ComponentProps) {
           <Input value={education.name} onChange={handleFieldChange('name')} placeholder='Institute Name' />
           {/*@ts-ignore*/}
           <Input value={education.degree} onChange={handleFieldChange('degree')} placeholder='Degree' />
+          {/*@ts-ignore*/}
+          <Input value={education.major} onChange={handleFieldChange('major')} placeholder='Major' />
           {/*@ts-ignore*/}
           <Input value={education.from} onChange={handleFieldChange('from')} placeholder='Start Date (MM/YYYY)' />
           {/*@ts-ignore*/}

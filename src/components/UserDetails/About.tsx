@@ -8,6 +8,8 @@ export function About({ saveStep, visibility, toggleResume }: ComponentProps) {
   const [fName, setFname] = useState<string>('')
   const [lName, setLname] = useState<string>('')
   const [about, setAbout] = useState<string>('')
+  const [phone, setPhone] = useState<string>('')
+  const [email, setEmail] = useState<string>('')
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
@@ -30,6 +32,8 @@ export function About({ saveStep, visibility, toggleResume }: ComponentProps) {
           lName,
           about,
           image,
+          phone,
+          email
         }
       })
     }
@@ -43,6 +47,8 @@ export function About({ saveStep, visibility, toggleResume }: ComponentProps) {
         <Input value={lName} onChange={setLname} placeholder='Last Name' />
         <TextArea value={about} onChange={setAbout} placeholder='About You' />
         <input type="file" className="w-full" onChange={handleFileChange} />
+        <Input value={phone} onChange={setPhone} placeholder='Phone Number' />
+        <Input value={email} onChange={setEmail} placeholder='Email Address' />
         <button 
           onClick={handleButtonClick}
           className="rounded rounded-md hover:bg-affair-600 py-2 border border-affair-400 text-affair-300 hover:text-white mt-3"

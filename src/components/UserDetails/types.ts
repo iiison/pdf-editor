@@ -4,6 +4,8 @@ export type UserDataT = {
   fName: string;
   lName: string;
   about: string;
+  phone: string;
+  email: string;
   image: string | ArrayBuffer | null | undefined;
 }
 
@@ -23,6 +25,7 @@ export type EducationT = {
   grade: string;
   from: string;
   to: string;
+  major: string;
 }
 
 export type AllUserDataT = {
