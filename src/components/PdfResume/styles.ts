@@ -22,10 +22,12 @@ export const styles = StyleSheet.create({
     height: 150,
     borderRadius: '50%',
     overflow: 'hidden',
+    backgroundColor: affair['500'],
   },
   photo: {
-    width: 150,
-    height: 150,
+    height: '100%',
+    width: 'auto',
+    opacity: 0.85,
   },
   details: {
     color: white,
@@ -121,7 +123,7 @@ export const styles = StyleSheet.create({
   responsibilities: {
     width: '100%',
     margin: '10px 0',
-    fontSize: 10,
+    fontSize: 11,
     color: affair['950'],
     display: 'flex',
     flexDirection: 'column',

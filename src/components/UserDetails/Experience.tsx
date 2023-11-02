@@ -57,10 +57,10 @@ export function Experience({ saveStep, visibility }: ComponentProps) {
   return (
     <div className={`w-full h-full flex items-center justify-center ${!visibility && 'hidden'}`}>
       <div className="flex-col flex gap-3 w-1/2">
-        <div className="flex w-full gap-2">
-          <h1 className="w-full text-center text-xl text-affair-400 mb-2">About You</h1>
+        <div className="flex w-full gap-2 flex-wrap">
+          <h1 className="w-full text-center text-xl text-affair-400 mb-2">Add Work Experience</h1>
           {experiences && experiences.length > 0 && (
-            <ul className="w-full flex gap-2">
+            <ul className="w-full flex flex-wrap gap-2">
               {experiences.map((exp, index) => (
                 <li 
                   onClick={handleCompanyTagClick(index)}
@@ -81,7 +81,7 @@ export function Experience({ saveStep, visibility }: ComponentProps) {
           <Input value={experience.to} onChange={handleFieldChange('to')} placeholder='End Date (MM/YYYY)' />
           {/*@ts-ignore*/}
           <Input value={experience.location} onChange={handleFieldChange('location')} placeholder='Location' />
-          <TextArea value={experience.details} onChange={handleFieldChange('details')} placeholder='Add Details' />
+          <TextArea value={experience.details} onChange={handleFieldChange('details')} placeholder='Add Details (Use New Line For Bullet Points)' />
           <div className="w-full flex justify-between">
             <button 
               onClick={handleAddMoreClick}
