@@ -3,7 +3,7 @@ import { useState, Dispatch, SetStateAction, ChangeEvent } from 'react'
 import { Input, TextArea } from './Input'
 import type { ComponentProps, UserDataT, ExperienceT } from './types'
 
-export function Experience({ saveStep, visibility }: ComponentProps) {
+export function Experience({ saveStep, visibility, userData }: ComponentProps) {
   const DEFAULT_EXP = {
     title: '',
     company: '',
@@ -13,9 +13,10 @@ export function Experience({ saveStep, visibility }: ComponentProps) {
     location: '',
     skills: '',
   }
-  const [experiences, setExperiences] = useState<ExperienceT[]>([])
+  const { experiences: userExps } = userData
+  const [experiences, setExperiences] = useState<ExperienceT[]>(userExps || [])
   const [activeIndex, setActiveIndex] = useState(0)
-  const [experience, setExperience] = useState<ExperienceT>(DEFAULT_EXP)
+  const [experience, setExperience] = useState<ExperienceT>(userExps?.[0] || DEFAULT_EXP)
 
   const handleButtonClick = () => {
     if (experiences.length !== 0) {
@@ -64,6 +65,7 @@ export function Experience({ saveStep, visibility }: ComponentProps) {
             <ul className="w-full flex flex-wrap gap-2">
               {experiences.map((exp, index) => (
                 <li 
+                  key={`${exp?.company}_${index}`}
                   onClick={handleCompanyTagClick(index)}
                   className="bg-affair-700 text-white rounded-md py-1 px-2 cursor-pointer"
                 >{exp?.company}</li>
@@ -82,8 +84,8 @@ export function Experience({ saveStep, visibility }: ComponentProps) {
           <Input value={experience.to} onChange={handleFieldChange('to')} placeholder='End Date (MM/YYYY)' />
           {/*@ts-ignore*/}
           <Input value={experience.location} onChange={handleFieldChange('location')} placeholder='Location' />
-          <TextArea value={experience.details} onChange={handleFieldChange('details')} placeholder='Add Details (Use New Line For Bullet Points)' />
-          <TextArea value={experience.skills} onChange={handleFieldChange('skills')} placeholder='Add Details (Use New Line For Bullet Points)' />
+          <TextArea value={experience.details || ''} onChange={handleFieldChange('details')} placeholder='Add Details (Use New Line For Bullet Points)' />
+          <TextArea value={experience.skills || ''} onChange={handleFieldChange('skills')} placeholder='Add Skills Used Separated By Comma' />
           <div className="w-full flex justify-between">
             <button 
               onClick={handleAddMoreClick}

@@ -10,23 +10,23 @@ export type UserDataT = {
 }
 
 export type ExperienceT = {
-  company: string;
-  title: string;
-  details: string;
-  location: string;
-  skills: string;
-  from: string;
-  to: string;
+  company?: string;
+  title?: string;
+  details?: string;
+  location?: string;
+  skills?: string;
+  from?: string;
+  to?: string;
 }
 
 export type EducationT = {
-  name: string;
-  degree: string;
-  details: string;
-  grade: string;
-  from: string;
-  to: string;
-  major: string;
+  name?: string;
+  degree?: string;
+  details?: string;
+  grade?: string;
+  from?: string;
+  to?: string;
+  major?: string;
 }
 
 export type AllUserDataT = {

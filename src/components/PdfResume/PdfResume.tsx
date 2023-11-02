@@ -62,16 +62,19 @@ export default function PdfResume() {
               <View style={styles.section}>
                 <Text style={styles.sectionHeading}>Work Experience</Text> 
                 {experiences.map(
-                  ({ company, title, details, location, from, to }) => (
-                    <View style={styles.experience}>
+                  ({ company, title, details, location, from, to, skills }) => (
+                    <View style={styles.experience} key={`${company}-${title}`}>
                       <View style={styles.exp}>
                         <Text style={styles.position}>{title}</Text>
                         <Text style={styles.company}>{company} ({from} - {to})</Text>
                       </View>
                       <View style={styles.responsibilities}>
                         {details?.split(/\n/g).map((res) => (
-                          <Text>- {res}</Text>
+                          <Text key={`${res}-${company}-${title}`}>- {res}</Text>
                         ))}
+                      </View>
+                      <View style={styles.resSkills}>
+                        {skills?.split(', ').map((sk) => <Text style={styles.skillTag} key={`${sk}-${company}-${title}`}>{sk}</Text>)}
                       </View>
                     </View>
                   ))}
@@ -95,7 +98,7 @@ export default function PdfResume() {
                     <Text style={styles.sectionHeading}>Research Projects</Text> 
                     {data.researchProjects.map(
                       ({ Title, Institution, Duration, Description }) => (
-                        <View style={styles.experience}>
+                        <View key={`${Title}-${Institution}`} style={styles.experience}>
                           <View style={styles.exp}>
                             <Text style={styles.position}>{Title}</Text>
                             <Text style={styles.company}>{Institution} ({Duration})</Text>
@@ -114,7 +117,7 @@ export default function PdfResume() {
                     <Text style={styles.sectionHeading}>Publications</Text> 
                     {data.Publications.map(
                       ({ Title, journal, Year, Description }) => (
-                        <View style={styles.experience}>
+                        <View key={`${Title}-${Year}`} style={styles.experience}>
                           <View style={styles.exp}>
                             <Text style={styles.position}>{Title}</Text>
                             <Text style={styles.company}>In {journal} in year {Year}</Text>
@@ -130,10 +133,10 @@ export default function PdfResume() {
               <View style={styles.section}>
                 <Text style={styles.sectionHeading}>Education</Text> 
                 {educations.map(
-                  ({ name, degree, details, grade, from, to }) => (
-                    <View style={styles.experience}>
+                  ({ name, degree, details, grade, from, to, major }) => (
+                    <View key={`${name}-${degree}-${major}`} style={styles.experience}>
                       <View style={styles.exp}>
-                        <Text style={styles.position}>{degree}</Text>
+                        <Text style={styles.position}>{degree} in {major}</Text>
                         <Text style={styles.company}>{name} ({from} - {to})</Text>
                       </View>
                     </View>

@@ -3,7 +3,7 @@ import { useState, Dispatch, SetStateAction, ChangeEvent } from 'react'
 import { Input, TextArea } from './Input'
 import type { ComponentProps, UserDataT, EducationT } from './types'
 
-export function Education({ saveStep, visibility }: ComponentProps) {
+export function Education({ saveStep, visibility, userData }: ComponentProps) {
   const DEFAULT_EDU = {
     name: '',
     degree: '',
@@ -13,9 +13,10 @@ export function Education({ saveStep, visibility }: ComponentProps) {
     details: '',
     major: '',
   }
-  const [educations, setExperiences] = useState<EducationT[]>([])
+  const { educations : userEdu } = userData
+  const [educations, setExperiences] = useState<EducationT[]>(userEdu || [])
   const [activeIndex, setActiveIndex] = useState(0)
-  const [education, setExperience] = useState<EducationT>(DEFAULT_EDU)
+  const [education, setExperience] = useState<EducationT>(userEdu?.[0] || DEFAULT_EDU)
 
   const handleButtonClick = () => {
     if (educations.length !== 0) {
@@ -63,6 +64,7 @@ export function Education({ saveStep, visibility }: ComponentProps) {
             <ul className="w-full flex gap-2">
               {educations.map((exp, index) => (
                 <li 
+                  key={`${exp.name}_${index}`}
                   onClick={handleEduTagClick(index)}
                   className="bg-affair-700 text-white rounded-md py-1 px-2 cursor-pointer"
                 >{exp?.name}</li>
@@ -83,7 +85,7 @@ export function Education({ saveStep, visibility }: ComponentProps) {
           <Input value={education.to} onChange={handleFieldChange('to')} placeholder='End Date (MM/YYYY)' />
           {/*@ts-ignore*/}
           <Input value={education.grade} onChange={handleFieldChange('grade')} placeholder='Grade' />
-          <TextArea value={education.details} onChange={handleFieldChange('details')} placeholder='Add Details' />
+          <TextArea value={education.details || ''} onChange={handleFieldChange('details')} placeholder='Add Details' />
           <div className="w-full flex justify-between">
             <button 
               onClick={handleAddMoreClick}

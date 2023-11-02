@@ -34,6 +34,7 @@ export default function UserDetails() {
       <div className={`flex h-full ${showResume ? 'w-1/2 flex-row' : 'w-full'}`}>
         {Order.map((component, index) => component(
           {
+            key: index,
             saveStep: handleDataSave,
             visibility: index === currentStep,
             toggleResume,

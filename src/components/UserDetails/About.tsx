@@ -3,13 +3,14 @@ import { useState, Dispatch, SetStateAction, ChangeEvent } from 'react'
 import { Input, TextArea } from './Input'
 import type { ComponentProps, UserDataT } from './types'
 
-export function About({ saveStep, visibility, toggleResume }: ComponentProps) {
-  const [image, setImage] = useState<UserDataT["image"]>()
-  const [fName, setFname] = useState<string>('')
-  const [lName, setLname] = useState<string>('')
-  const [about, setAbout] = useState<string>('')
-  const [phone, setPhone] = useState<string>('')
-  const [email, setEmail] = useState<string>('')
+export function About({ saveStep, visibility, toggleResume, userData = {} }: ComponentProps) {
+  const { about: userDetails = {} } = userData
+  const [image, setImage] = useState<UserDataT["image"]>(userDetails.image || '')
+  const [fName, setFname] = useState<string>(userDetails.fName || '')
+  const [lName, setLname] = useState<string>(userDetails.lName || '')
+  const [about, setAbout] = useState<string>(userDetails.about || '')
+  const [phone, setPhone] = useState<string>(userDetails.phone || '')
+  const [email, setEmail] = useState<string>(userDetails.email || '')
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
@@ -41,7 +42,7 @@ export function About({ saveStep, visibility, toggleResume }: ComponentProps) {
 
   return (
     <div className={`w-full h-full flex items-center justify-center ${!visibility && 'hidden'}`}>
-      <div className="flex-col flex gap-3 w-1/4">
+      <div className="flex-col flex gap-3 w-1/2">
         <h1 className="w-full text-center text-xl text-affair-400 mb-2">About You</h1>
         <Input value={fName} onChange={setFname} placeholder='First Name' />
         <Input value={lName} onChange={setLname} placeholder='Last Name' />

@@ -129,6 +129,21 @@ export const styles = StyleSheet.create({
     flexDirection: 'column',
     gap: 3
   },
+  resSkills: {
+    width: '100%',
+    margin: '10px 0',
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: '5px'
+  },
+  skillTag: {
+    fontSize: 8,
+    color: 'white',
+    backgroundColor: affair['700'],
+    padding: '5px',
+    borderRadius: 3,
+  },
   skill: {
     width: '100%',
     margin: '8px 0',
