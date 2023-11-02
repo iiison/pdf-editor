@@ -35,5 +35,6 @@ export type ComponentProps = {
   saveStep: (data: Partial<AllUserDataT>) => void;
   toggleResume: Dispatch<SetStateAction<boolean>>;
   visibility: boolean;
+  userData: Partial<AllUserDataT>;
 }
 

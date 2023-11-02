@@ -4,6 +4,7 @@ import { About } from './About'
 import { Experience } from './Experience'
 import { Education } from './Education'
 import { Preview } from './Preview'
+import { GeneratePdf } from './GeneratePdf'
 
 import type { ComponentProps, AllUserDataT } from './types'
 
@@ -32,7 +33,7 @@ export default function UserDetails() {
     setStep(index)
   }
 
-  const Order: ((data: ComponentProps) => JSX.Element)[] = [About, Experience, Education]
+  const Order: ((data: ComponentProps | any) => JSX.Element)[] = [About, Experience, Education, GeneratePdf]
 
   return (
     <div className="h-[calc(100vh - 67px)] w-full overflow-hidden flex">
@@ -42,6 +43,7 @@ export default function UserDetails() {
             saveStep: handleDataSave,
             visibility: index === currentStep,
             toggleResume,
+            userData,
           }
         ))}
       </div>

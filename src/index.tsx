@@ -13,6 +13,7 @@ import Dashboard from './components/Dashboard'
 import Header from './components/Header/Header'
 import Sidebar from './components/Sidebar/Sidebar'
 import reportWebVitals from './reportWebVitals';
+import PdfResume from './components/PdfResume/PdfResume'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -48,11 +49,11 @@ root.render(
         <div className="flex w-full h-full bg-mirage-950">
           <div className="px-7 py-4 flex w-full">
             <Routes>
-              <Route path="/" element={<Dashboard />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/tasks" element={<Dashboard />} />
               <Route path="/jobs" element={<Dashboard />} />
-              <Route path="/edit-resume" element={<Dashboard />} />
+              <Route path="/pdf-resume" element={<PdfResume />} />
+              <Route path="/" index={true} element={<Dashboard />} />
             </Routes>
           </div>
         </div>

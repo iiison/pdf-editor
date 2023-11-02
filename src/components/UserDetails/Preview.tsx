@@ -12,7 +12,7 @@ export function Preview({ userData, onSectionClick }: Props) {
     <div className="flex border-2 border-affair-200 w-full h-full overflow-y-auto p-4">
       {about && (
         <div className="w-full flex flex-col">
-          <div className="flex w-full flex-wrap items-center mb-6" onClick={onSectionClick(0)}>
+          <div className="flex w-full flex-wrap items-center mb-6 border border-transparent hover:border-affair-300" onClick={onSectionClick(0)}>
             <div className="h-[150px] w-[150px] overflow-hidden rounded-full border-2 border-affair-400">
               {/* @ts-ignore */}
               {about.image && <img src={about?.image} className="w-full" />}
@@ -22,7 +22,7 @@ export function Preview({ userData, onSectionClick }: Props) {
               <p className="w-full text-sm">{about.about}</p>
             </div>
           </div>
-          <div className="flex w-full flex-wrap" onClick={onSectionClick(1)}>
+          <div className="flex w-full flex-wrap border border-transparent hover:border-affair-300" onClick={onSectionClick(1)}>
             {experiences && experiences.length > 0 && (
               <ul className="flex w-full flex-col">
                 <li className="w-full text-affair-400 text-2xl my-3">Experiences</li>
@@ -43,7 +43,7 @@ export function Preview({ userData, onSectionClick }: Props) {
               </ul>
             )}
           </div>
-          <div className="flex w-full flex-wrap" onClick={onSectionClick(2)}>
+          <div className="flex w-full flex-wrap border border-transparent hover:border-affair-300" onClick={onSectionClick(2)}>
             {educations && educations.length > 0 && (
               <ul className="flex w-full flex-col">
                 <li className="w-full text-affair-400 text-2xl my-3">Education</li>
@@ -57,7 +57,7 @@ export function Preview({ userData, onSectionClick }: Props) {
                       <span className="text-sm">
                         {edu.from} - {edu.to}
                       </span>
-                      <p className="my-2 text-sm">{edu.details}</p>
+                      <p className="my-2 text-sm w-full">{edu.details}</p>
                     </div>
                   </li>
                 ))}

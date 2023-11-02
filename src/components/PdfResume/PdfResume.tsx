@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router-dom'
 import { Page, Text, View, Document, PDFViewer, Image } from '@react-pdf/renderer';
 
 import rick from './rick.png'
@@ -7,9 +8,11 @@ import { styles } from './styles';
 import data from './data.json';
 
 export default function PdfResume() {
-  console.log('>>>>>>>>><<<<<<<<<<')
-  console.log(data)
-  console.log('>>>>>>>>><<<<<<<<<<')
+  const loc = useLocation()
+
+  console.log('>>>>>>>>>>>>>>>>>>>>>>>>')
+  console.log(loc)
+  console.log('>>>>>>>>>>>>>>>>>>>>>>>>')
 
   return (
     <div className="w-full h-full items-center justify-center flex bg-gradient-to-b from-affair-500 to-affair-700 ">
