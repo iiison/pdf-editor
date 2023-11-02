@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useLocation } from 'react-router-dom'
 
 import { About } from './About'
 import { Experience } from './Experience'
@@ -8,18 +9,11 @@ import { GeneratePdf } from './GeneratePdf'
 
 import type { ComponentProps, AllUserDataT } from './types'
 
-function Orange() {
-  return <div>Orange</div>
-}
-
-function Yellow() {
-  return <div>Yellow</div>
-}
-
 export default function UserDetails() {
+  const { state } = useLocation()
   const [showResume, toggleResume] = useState(true)
   const [currentStep, setStep] = useState(0)
-  const [userData, setUserData] = useState<Partial<AllUserDataT>>({})
+  const [userData, setUserData] = useState<Partial<AllUserDataT>>(state || {})
 
   const handleDataSave = (data: Partial<AllUserDataT>) => {
     setStep(currentStep + 1)

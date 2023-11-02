@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { Page, Text, View, Document, PDFViewer, Image } from '@react-pdf/renderer';
 
 import rick from './rick.png'
@@ -11,6 +11,7 @@ import type { AllUserDataT } from '../UserDetails/types'
 
 export default function PdfResume() {
   const loc = useLocation()
+  const navigate = useNavigate()
 
   const { state }: { state: AllUserDataT } = loc
 
@@ -20,8 +21,16 @@ export default function PdfResume() {
 
   const { about, experiences, educations } = state
 
+  const handleButtonClick = () => {
+    navigate('/', { state: {...state} })
+  }
+
   return (
-    <div className="w-full h-full items-center justify-center flex bg-gradient-to-b from-affair-500 to-affair-700 ">
+    <div className="w-full h-full items-center justify-center flex flex-col bg-gradient-to-b from-affair-500 to-affair-700 ">
+      <button 
+        onClick={handleButtonClick}
+        className="rounded rounded-md hover:bg-affair-600 py-2 border border-affair-400 text-affair-300 hover:text-white my-3 px-3 ml-auto mr-[5%]"
+      >Edit Details</button>
       <PDFViewer width="90%" height="90%">
         <Document>
           <Page size="A4" style={styles.page} wrap={false}>

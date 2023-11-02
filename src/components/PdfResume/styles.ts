@@ -87,7 +87,7 @@ export const styles = StyleSheet.create({
   },
   sectionHeading: {
     fontSize: 20,
-    color: affair['900'],
+    color: affair['800'],
     width: '100%',
     fontWeight: 'bold',
     marginBottom: 10,
@@ -104,7 +104,7 @@ export const styles = StyleSheet.create({
   },
   position: {
     color: affair['900'],
-    fontSize: 16,
+    fontSize: 15,
     marginBottom: 2,
     marginTop: 5,
   },

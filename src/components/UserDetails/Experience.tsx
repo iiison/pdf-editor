@@ -11,6 +11,7 @@ export function Experience({ saveStep, visibility }: ComponentProps) {
     from: '',
     to: '',
     location: '',
+    skills: '',
   }
   const [experiences, setExperiences] = useState<ExperienceT[]>([])
   const [activeIndex, setActiveIndex] = useState(0)
@@ -82,6 +83,7 @@ export function Experience({ saveStep, visibility }: ComponentProps) {
           {/*@ts-ignore*/}
           <Input value={experience.location} onChange={handleFieldChange('location')} placeholder='Location' />
           <TextArea value={experience.details} onChange={handleFieldChange('details')} placeholder='Add Details (Use New Line For Bullet Points)' />
+          <TextArea value={experience.skills} onChange={handleFieldChange('skills')} placeholder='Add Details (Use New Line For Bullet Points)' />
           <div className="w-full flex justify-between">
             <button 
               onClick={handleAddMoreClick}

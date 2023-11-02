@@ -14,6 +14,7 @@ export type ExperienceT = {
   title: string;
   details: string;
   location: string;
+  skills: string;
   from: string;
   to: string;
 }
