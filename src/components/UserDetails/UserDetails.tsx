@@ -6,6 +6,7 @@ import { Experience } from './Experience'
 import { Education } from './Education'
 import { Preview } from './Preview'
 import { GeneratePdf } from './GeneratePdf'
+import { UploadJson } from './UploadJSON'
 
 import type { ComponentProps, AllUserDataT } from './types'
 
@@ -27,20 +28,18 @@ export default function UserDetails() {
     setStep(index)
   }
 
-  const Order: ((data: ComponentProps | any) => JSX.Element)[] = [About, Experience, Education, GeneratePdf]
+  const Order: ((data: ComponentProps | any) => JSX.Element)[] = [UploadJson, About, Experience, Education, GeneratePdf]
 
   return (
     <div className="h-[calc(100vh - 67px)] w-full overflow-hidden flex">
       <div className={`flex h-full ${showResume ? 'w-1/2 flex-row' : 'w-full'}`}>
-        {Order.map((component, index) => component(
-          {
-            key: index,
-            saveStep: handleDataSave,
-            visibility: index === currentStep,
-            toggleResume,
-            userData,
-          }
-        ))}
+        {Order.map((Component, index) => <Component
+            key={index}
+            saveStep={handleDataSave}
+            visibility={index === currentStep}
+            toggleResume={toggleResume}
+            userData={userData}
+          />)}
       </div>
       <div className="w-1/2 flex">
         <Preview userData={userData} onSectionClick={handleStepChangeClick} />
