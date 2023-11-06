@@ -17,6 +17,8 @@ export default function UserDetails() {
   const [userData, setUserData] = useState<Partial<AllUserDataT>>(state || {})
 
   const handleDataSave = (data: Partial<AllUserDataT>) => {
+    console.log(data)
+
     setStep(currentStep + 1)
     setUserData({
       ...userData,
@@ -28,6 +30,7 @@ export default function UserDetails() {
     setStep(index)
   }
 
+  // const Order: ((data: ComponentProps | any) => JSX.Element)[] = [About, Experience, Education, GeneratePdf]
   const Order: ((data: ComponentProps | any) => JSX.Element)[] = [UploadJson, About, Experience, Education, GeneratePdf]
 
   return (

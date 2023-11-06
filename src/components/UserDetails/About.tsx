@@ -1,4 +1,4 @@
-import { useState, Dispatch, SetStateAction, ChangeEvent } from 'react'
+import { useState, useEffect, Dispatch, SetStateAction, ChangeEvent } from 'react'
 
 import { Input, TextArea } from './Input'
 import type { ComponentProps, UserDataT } from './types'
@@ -11,6 +11,21 @@ export function About({ saveStep, visibility, toggleResume, userData = {} }: Com
   const [about, setAbout] = useState<string>(userDetails.about || '')
   const [phone, setPhone] = useState<string>(userDetails.phone || '')
   const [email, setEmail] = useState<string>(userDetails.email || '')
+
+  useEffect(() => {
+    if (!userData.about) {
+      return
+    }
+
+    const data = userData.about
+
+    setFname(data.fName || '')
+    setImage(data.image || '')
+    setLname(data.lName || '')
+    setAbout(data.about || '')
+    setPhone(data.phone || '')
+    setEmail(data.email || '')
+  }, [userData])
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {

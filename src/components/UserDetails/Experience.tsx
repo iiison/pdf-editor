@@ -1,4 +1,4 @@
-import { useState, Dispatch, SetStateAction, ChangeEvent } from 'react'
+import { useState, useEffect, Dispatch, SetStateAction, ChangeEvent } from 'react'
 
 import { Input, TextArea } from './Input'
 import type { ComponentProps, UserDataT, ExperienceT } from './types'
@@ -13,10 +13,21 @@ export function Experience({ saveStep, visibility, userData }: ComponentProps) {
     location: '',
     skills: '',
   }
-  const { experiences: userExps } = userData
+  const { workExperience: userExps } = userData
   const [experiences, setExperiences] = useState<ExperienceT[]>(userExps || [])
   const [activeIndex, setActiveIndex] = useState(0)
   const [experience, setExperience] = useState<ExperienceT>(userExps?.[0] || DEFAULT_EXP)
+
+  console.log(userData.workExperience)
+
+  useEffect(() => {
+    if (!userData.workExperience) {
+      return
+    }
+
+    setExperiences(userData.workExperience)
+    setExperience(userData.workExperience[0])
+  }, [userData])
 
   const handleButtonClick = () => {
     if (experiences.length !== 0) {
@@ -65,25 +76,23 @@ export function Experience({ saveStep, visibility, userData }: ComponentProps) {
             <ul className="w-full flex flex-wrap gap-2">
               {experiences.map((exp, index) => (
                 <li 
-                  key={`${exp?.company}_${index}`}
+                  key={`${exp?.Company}_${index}`}
                   onClick={handleCompanyTagClick(index)}
                   className="bg-affair-700 text-white rounded-md py-1 px-2 cursor-pointer"
-                >{exp?.company}</li>
+                >{exp?.Company}</li>
               ))}
             </ul>
           )}
         </div>
         <div className="flex-col flex w-full gap-3">
           {/*@ts-ignore*/}
-          <Input value={experience.company} onChange={handleFieldChange('company')} placeholder='Company Name' />
+          <Input value={experience.Company} onChange={handleFieldChange('Company')} placeholder='Company Name' />
           {/*@ts-ignore*/}
-          <Input value={experience.title} onChange={handleFieldChange('title')} placeholder='Job Title' />
+          <Input value={experience.Position} onChange={handleFieldChange('Position')} placeholder='Job Title' />
           {/*@ts-ignore*/}
-          <Input value={experience.from} onChange={handleFieldChange('from')} placeholder='Start Date (MM/YYYY)' />
+          <Input value={experience.Duration} onChange={handleFieldChange('Duration')} placeholder='Start Date (MM/YYYY)' />
           {/*@ts-ignore*/}
-          <Input value={experience.to} onChange={handleFieldChange('to')} placeholder='End Date (MM/YYYY)' />
-          {/*@ts-ignore*/}
-          <Input value={experience.location} onChange={handleFieldChange('location')} placeholder='Location' />
+          <Input value={experience.location} onChange={handleFieldChange('location')} placeholder='Duration' />
           <TextArea value={experience.details || ''} onChange={handleFieldChange('details')} placeholder='Add Details (Use New Line For Bullet Points)' />
           <TextArea value={experience.skills || ''} onChange={handleFieldChange('skills')} placeholder='Add Skills Used Separated By Comma' />
           <div className="w-full flex justify-between">

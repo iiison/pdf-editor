@@ -10,8 +10,9 @@ export type UserDataT = {
 }
 
 export type ExperienceT = {
-  company?: string;
-  title?: string;
+  Company?: string;
+  Duration?: string;
+  Position?: string;
   details?: string;
   location?: string;
   skills?: string;
@@ -31,7 +32,7 @@ export type EducationT = {
 
 export type AllUserDataT = {
   about: Partial<UserDataT>;
-  experiences: Partial<ExperienceT>[];
+  workExperience: Partial<ExperienceT>[];
   educations: Partial<EducationT>[];
 }
 

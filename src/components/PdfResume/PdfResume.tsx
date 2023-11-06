@@ -19,7 +19,7 @@ export default function PdfResume() {
     return <></>
   }
 
-  const { about, experiences, educations } = state
+  const { about, workExperience: experiences, educations } = state
 
   const handleButtonClick = () => {
     navigate('/', { state: {...state} })
@@ -62,19 +62,19 @@ export default function PdfResume() {
               <View style={styles.section}>
                 <Text style={styles.sectionHeading}>Work Experience</Text> 
                 {experiences.map(
-                  ({ company, title, details, location, from, to, skills }) => (
-                    <View style={styles.experience} key={`${company}-${title}`}>
+                  ({ Company, Position, details, location, Duration, skills }) => (
+                    <View style={styles.experience} key={`${Company}-${Position}`}>
                       <View style={styles.exp}>
-                        <Text style={styles.position}>{title}</Text>
-                        <Text style={styles.company}>{company} ({from} - {to})</Text>
+                        <Text style={styles.position}>{Position}</Text>
+                        <Text style={styles.company}>{Company} ({Duration})</Text>
                       </View>
                       <View style={styles.responsibilities}>
                         {details?.split(/\n/g).map((res) => (
-                          <Text key={`${res}-${company}-${title}`}>- {res}</Text>
+                          <Text key={`${res}-${Company}-${Position}`}>- {res}</Text>
                         ))}
                       </View>
                       <View style={styles.resSkills}>
-                        {skills?.split(', ').map((sk) => <Text style={styles.skillTag} key={`${sk}-${company}-${title}`}>{sk}</Text>)}
+                        {skills?.split(', ').map((sk) => <Text style={styles.skillTag} key={`${sk}-${Company}-${Position}`}>{sk}</Text>)}
                       </View>
                     </View>
                   ))}

@@ -1,10 +1,11 @@
 import { useState, Dispatch, SetStateAction, ChangeEvent } from 'react'
-import type { ComponentProps } from './types'
+import type { ComponentProps, AllUserDataT } from './types'
 
 export function UploadJson({
-  visibility
+  visibility,
+  saveStep,
 } : ComponentProps) {
-  const [userData, setUserData] = useState<unknown>({})
+  const [userData, setUserData] = useState<unknown | null>(null)
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
       const reader = new FileReader()
@@ -22,8 +23,10 @@ export function UploadJson({
           const json = JSON.parse(data)
 
           setUserData(json)
+          saveStep(json as AllUserDataT)
         } catch(error) {
-          setUserData({})
+          console.log('Invalid shit')
+          setUserData(null)
         }
       })
 
