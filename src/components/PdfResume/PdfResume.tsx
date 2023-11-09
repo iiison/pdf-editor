@@ -19,7 +19,7 @@ export default function PdfResume() {
     return <></>
   }
 
-  const { about, workExperience: experiences, educations } = state
+  const { about, workExperience: experiences, Education } = state
 
   const handleButtonClick = () => {
     navigate('/', { state: {...state} })
@@ -132,12 +132,12 @@ export default function PdfResume() {
               }
               <View style={styles.section}>
                 <Text style={styles.sectionHeading}>Education</Text> 
-                {educations.map(
-                  ({ name, degree, details, grade, from, to, major }) => (
-                    <View key={`${name}-${degree}-${major}`} style={styles.experience}>
+                {Education.map(
+                  ({ Institution, Degree, Year, details, grade, from, to, major }) => (
+                    <View key={`${name}-${Degree}-${major}`} style={styles.experience}>
                       <View style={styles.exp}>
-                        <Text style={styles.position}>{degree} in {major}</Text>
-                        <Text style={styles.company}>{name} ({from} - {to})</Text>
+                        <Text style={styles.position}>{Degree} in {major}</Text>
+                        <Text style={styles.company}>{Institution} ({from} - {to})</Text>
                       </View>
                     </View>
                   ))}

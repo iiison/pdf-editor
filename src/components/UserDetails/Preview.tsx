@@ -6,7 +6,7 @@ type Props = {
 }
 
 export function Preview({ userData, onSectionClick }: Props) {
-  const { about, workExperience: experiences, educations } = userData
+  const { about, workExperience: experiences, Education: educations } = userData
 
   return (
     <div className="flex border-2 border-affair-200 w-full h-full overflow-y-auto p-4">
@@ -36,7 +36,7 @@ export function Preview({ userData, onSectionClick }: Props) {
                         {exp.Duration}
                       </span>
                     </div>
-                    <span className="text-affair-400 text-sm">{exp.Position} ({exp.location})</span>
+                    <span className="text-affair-400 text-sm">{exp.Position} {exp.location ? `({exp.location})` : ''}</span>
                     <p className="my-2 text-sm">{exp.details}</p>
                   </li>
                 ))}
@@ -51,11 +51,11 @@ export function Preview({ userData, onSectionClick }: Props) {
                   <li className="flex flex-col mb-4">
                     <div className="w-full flex items-center flex-wrap">
                       <span className="text-xl w-full">
-                        {edu.name}
+                        {edu.Institution}
                       </span>
-                      <span className="text-affair-400 text-sm">{edu.degree} ({edu.grade}) &nbsp;</span>
+                      <span className="text-affair-400 text-sm">{edu.Degree} {edu.grade ? `(${edu.grade})` : ''} &nbsp;</span>
                       <span className="text-sm">
-                        {edu.from} - {edu.to}
+                        {edu.Year}
                       </span>
                       <p className="my-2 text-sm w-full">{edu.details}</p>
                     </div>

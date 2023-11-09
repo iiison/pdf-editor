@@ -1,14 +1,13 @@
-import { useState, Dispatch, SetStateAction, ChangeEvent } from 'react'
+import { useState, useEffect, Dispatch, SetStateAction, ChangeEvent } from 'react'
 
 import { Input, TextArea } from './Input'
 import type { ComponentProps, UserDataT, EducationT } from './types'
 
 export function Education({ saveStep, visibility, userData }: ComponentProps) {
   const DEFAULT_EDU = {
-    name: '',
-    degree: '',
-    from: '',
-    to: '',
+    Institution: '',
+    Degree: '',
+    Year: '',
     grade: '',
     details: '',
     major: '',
@@ -17,6 +16,15 @@ export function Education({ saveStep, visibility, userData }: ComponentProps) {
   const [educations, setExperiences] = useState<EducationT[]>(userEdu || [])
   const [activeIndex, setActiveIndex] = useState(0)
   const [education, setExperience] = useState<EducationT>(userEdu?.[0] || DEFAULT_EDU)
+
+  useEffect(() => {
+    if (!userData.Education) {
+      return
+    }
+
+    setExperiences(userData.Education)
+    setExperience(userData.Education[0])
+  }, [userData])
 
   const handleButtonClick = () => {
     if (educations.length !== 0) {
@@ -59,30 +67,29 @@ export function Education({ saveStep, visibility, userData }: ComponentProps) {
   return (
     <div className={`w-full h-full flex items-center justify-center ${!visibility && 'hidden'}`}>
       <div className="flex-col flex gap-3 w-1/2">
-        <div className="flex w-full gap-2">
+        <div className="flex w-full gap-2 flex-wrap">
+          <h1 className="w-full text-center text-xl text-affair-400 mb-2">Education</h1>
           {educations && educations.length > 0 && (
             <ul className="w-full flex gap-2">
               {educations.map((exp, index) => (
                 <li 
-                  key={`${exp.name}_${index}`}
+                  key={`${exp.Institution}_${index}`}
                   onClick={handleEduTagClick(index)}
                   className="bg-affair-700 text-white rounded-md py-1 px-2 cursor-pointer"
-                >{exp?.name}</li>
+                >{exp?.Institution}</li>
               ))}
             </ul>
           )}
         </div>
         <div className="flex-col flex w-full gap-3">
           {/*@ts-ignore*/}
-          <Input value={education.name} onChange={handleFieldChange('name')} placeholder='Institute Name' />
+          <Input value={education.Institution} onChange={handleFieldChange('Institution')} placeholder='Institute Name' />
           {/*@ts-ignore*/}
-          <Input value={education.degree} onChange={handleFieldChange('degree')} placeholder='Degree' />
+          <Input value={education.Degree} onChange={handleFieldChange('Degree')} placeholder='Degree' />
+          {/*@ts-ignore*/}
+          <Input value={education.Year} onChange={handleFieldChange('Year')} placeholder='Duration(YYYY-YYYY)' />
           {/*@ts-ignore*/}
           <Input value={education.major} onChange={handleFieldChange('major')} placeholder='Major' />
-          {/*@ts-ignore*/}
-          <Input value={education.from} onChange={handleFieldChange('from')} placeholder='Start Date (MM/YYYY)' />
-          {/*@ts-ignore*/}
-          <Input value={education.to} onChange={handleFieldChange('to')} placeholder='End Date (MM/YYYY)' />
           {/*@ts-ignore*/}
           <Input value={education.grade} onChange={handleFieldChange('grade')} placeholder='Grade' />
           <TextArea value={education.details || ''} onChange={handleFieldChange('details')} placeholder='Add Details' />
