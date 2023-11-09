@@ -21,10 +21,11 @@ export type ExperienceT = {
 }
 
 export type EducationT = {
-  name?: string;
-  degree?: string;
+  Institution?: string;
+  Degree?: string;
   details?: string;
   grade?: string;
+  Year?: string;
   from?: string;
   to?: string;
   major?: string;
@@ -33,7 +34,7 @@ export type EducationT = {
 export type AllUserDataT = {
   about: Partial<UserDataT>;
   workExperience: Partial<ExperienceT>[];
-  educations: Partial<EducationT>[];
+  Education: Partial<EducationT>[];
 }
 
 export type ComponentProps = {

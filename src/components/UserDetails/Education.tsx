@@ -13,7 +13,7 @@ export function Education({ saveStep, visibility, userData }: ComponentProps) {
     details: '',
     major: '',
   }
-  const { educations : userEdu } = userData
+  const { Education : userEdu } = userData
   const [educations, setExperiences] = useState<EducationT[]>(userEdu || [])
   const [activeIndex, setActiveIndex] = useState(0)
   const [education, setExperience] = useState<EducationT>(userEdu?.[0] || DEFAULT_EDU)

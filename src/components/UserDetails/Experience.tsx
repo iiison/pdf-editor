@@ -18,8 +18,6 @@ export function Experience({ saveStep, visibility, userData }: ComponentProps) {
   const [activeIndex, setActiveIndex] = useState(0)
   const [experience, setExperience] = useState<ExperienceT>(userExps?.[0] || DEFAULT_EXP)
 
-  console.log(userData.workExperience)
-
   useEffect(() => {
     if (!userData.workExperience) {
       return
@@ -90,10 +88,9 @@ export function Experience({ saveStep, visibility, userData }: ComponentProps) {
           {/*@ts-ignore*/}
           <Input value={experience.Position} onChange={handleFieldChange('Position')} placeholder='Job Title' />
           {/*@ts-ignore*/}
-          <Input value={experience.Duration} onChange={handleFieldChange('Duration')} placeholder='Start Date (MM/YYYY)' />
+          <Input value={experience.Duration} onChange={handleFieldChange('Duration')} placeholder='Duration' />
           {/*@ts-ignore*/}
-          <Input value={experience.location} onChange={handleFieldChange('location')} placeholder='Duration' />
-          <TextArea value={experience.details || ''} onChange={handleFieldChange('details')} placeholder='Add Details (Use New Line For Bullet Points)' />
+          <TextArea value={experience.Responsibilities ? experience.Responsibilities.reduce((p, r) =>  `${p}\r\n- ${r}`, '').trim() : ''} onChange={handleFieldChange('details')} placeholder='Add Details (Use New Line For Bullet Points)' />
           <TextArea value={experience.skills || ''} onChange={handleFieldChange('skills')} placeholder='Add Skills Used Separated By Comma' />
           <div className="w-full flex justify-between">
             <button 

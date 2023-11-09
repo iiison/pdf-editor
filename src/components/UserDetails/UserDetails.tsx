@@ -16,9 +16,9 @@ export default function UserDetails() {
   const [currentStep, setStep] = useState(0)
   const [userData, setUserData] = useState<Partial<AllUserDataT>>(state || {})
 
-  const handleDataSave = (data: Partial<AllUserDataT>) => {
-    console.log(data)
+  console.log(userData)
 
+  const handleDataSave = (data: Partial<AllUserDataT>) => {
     setStep(currentStep + 1)
     setUserData({
       ...userData,
