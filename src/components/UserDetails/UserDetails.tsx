@@ -7,6 +7,7 @@ import { Education } from './Education'
 import { Preview } from './Preview'
 import { GeneratePdf } from './GeneratePdf'
 import { UploadJson } from './UploadJSON'
+import { Skills } from './Skills'
 
 import type { ComponentProps, AllUserDataT } from './types'
 
@@ -31,7 +32,7 @@ export default function UserDetails() {
   }
 
   // const Order: ((data: ComponentProps | any) => JSX.Element)[] = [About, Experience, Education, GeneratePdf]
-  const Order: ((data: ComponentProps | any) => JSX.Element)[] = [UploadJson, About, Experience, Education, GeneratePdf]
+  const Order: ((data: ComponentProps | any) => JSX.Element)[] = [UploadJson, About, Experience, Education, Skills, GeneratePdf]
 
   return (
     <div className="h-[calc(100vh - 67px)] w-full overflow-hidden flex">
