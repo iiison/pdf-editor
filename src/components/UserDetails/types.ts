@@ -31,10 +31,13 @@ export type EducationT = {
   major?: string;
 }
 
+export type Skill = string
+
 export type AllUserDataT = {
   about: Partial<UserDataT>;
   workExperience: Partial<ExperienceT>[];
   Education: Partial<EducationT>[];
+  Skills: Skill[];
 }
 
 export type ComponentProps = {
