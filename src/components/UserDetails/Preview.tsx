@@ -6,7 +6,7 @@ type Props = {
 }
 
 export function Preview({ userData, onSectionClick }: Props) {
-  const { about, workExperience: experiences, Education: educations } = userData
+  const { about, workExperience: experiences, Education: educations, Skills } = userData
 
   return (
     <div className="flex border-2 border-affair-200 w-full h-full overflow-y-auto p-4">
@@ -38,6 +38,20 @@ export function Preview({ userData, onSectionClick }: Props) {
                     </div>
                     <span className="text-affair-400 text-sm">{exp.Position} {exp.location ? `({exp.location})` : ''}</span>
                     <p className="my-2 text-sm">{exp.details}</p>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+          <div className="flex w-full flex-wrap border border-transparent hover:border-affair-300" onClick={onSectionClick(4)}>
+            {Skills && Skills.length > 0 && (
+              <ul className="flex w-full flex-col">
+                <li className="w-full text-affair-400 text-2xl my-3">Skills</li>
+                {Skills.map((skill) => (
+                  <li className="flex flex-col mb-4">
+                    <div className="flex items-center">
+                      - {skill}
+                    </div>
                   </li>
                 ))}
               </ul>
