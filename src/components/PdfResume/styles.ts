@@ -108,6 +108,12 @@ export const styles = StyleSheet.create({
     marginBottom: 2,
     marginTop: 5,
   },
+  skillItem: {
+    color: affair['900'],
+    fontSize: 12,
+    marginBottom: 2,
+    marginTop: 2,
+  },
   company: {
     color: affair['600'],
     fontSize: 12,

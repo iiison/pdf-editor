@@ -9,6 +9,15 @@ import data from './data.json';
 
 import type { AllUserDataT } from '../UserDetails/types'
 
+async function getDataFromUrl(url: string) {
+  const data = await fetch(url, { mode: 'no-cors' })
+
+  console.log(data)
+  // const response = await data.json()
+
+  // console.log(response)
+}
+
 export default function PdfResume() {
   const loc = useLocation()
   const navigate = useNavigate()
@@ -19,7 +28,11 @@ export default function PdfResume() {
     return <></>
   }
 
-  const { about, workExperience: experiences, Education } = state
+  const { about, workExperience: experiences, Education, Skills } = state
+
+  if (typeof about.image === 'string') {
+    // getDataFromUrl(about.image)
+  }
 
   const handleButtonClick = () => {
     navigate('/', { state: {...state} })
@@ -130,14 +143,27 @@ export default function PdfResume() {
                   </View>
                 )
               }
+              {Skills && Skills.length > 0 && (
+                <View style={styles.section}>
+                  <Text style={styles.sectionHeading}>Skills</Text> 
+                  {Skills.map(
+                    (s, i) => (
+                      <View key={`${s}-${i}`} style={styles.experience}>
+                        <View style={styles.exp}>
+                          <Text style={styles.skillItem}>- {s}</Text>
+                        </View>
+                      </View>
+                    ))}
+                </View>
+              )}
               <View style={styles.section}>
                 <Text style={styles.sectionHeading}>Education</Text> 
                 {Education.map(
-                  ({ Institution, Degree, Year, details, grade, from, to, major }) => (
+                  ({ Institution, Degree, Year, details, grade, major }) => (
                     <View key={`${name}-${Degree}-${major}`} style={styles.experience}>
                       <View style={styles.exp}>
-                        <Text style={styles.position}>{Degree} in {major}</Text>
-                        <Text style={styles.company}>{Institution} ({from} - {to})</Text>
+                        <Text style={styles.position}>{Degree} {major ? `in {major}` : ''}</Text>
+                        <Text style={styles.company}>{Institution} ({Year})</Text>
                       </View>
                     </View>
                   ))}
